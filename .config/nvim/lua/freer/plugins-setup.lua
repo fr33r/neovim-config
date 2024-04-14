@@ -53,6 +53,7 @@ return packer.startup(function(use)
 	use("olivercederborg/poimandres.nvim")
 	use("stevearc/conform.nvim")
 	use("mfussenegger/nvim-lint")
+	use("lukas-reineke/indent-blankline.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
