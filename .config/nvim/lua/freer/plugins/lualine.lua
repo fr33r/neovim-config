@@ -6,5 +6,5 @@ end
 -- 34:00 for customizing colors.
 
 lualine.setup({
-  theme = 'poimandres',
+  theme = 'vscode',
 })
