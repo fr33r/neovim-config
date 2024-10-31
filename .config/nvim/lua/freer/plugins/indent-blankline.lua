@@ -1,7 +1,8 @@
-local status, indent_blankline = pcall(require, 'ibl')
-if not status then
-  return
-end
+return {
+  "lukas-reineke/indent-blankline.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  main = "ibl",
+  opts = {
 
--- https://github.com/lukas-reineke/indent-blankline.nvim
-indent_blankline.setup()
+  }
+}
