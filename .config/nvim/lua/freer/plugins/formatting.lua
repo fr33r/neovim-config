@@ -19,6 +19,7 @@ return {
 				-- ruby = { "rubocop" },
 				sql = { "sql_formatter" },
 				lua = { "stylua" },
+				xml = { "xmlformatter" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

@@ -17,11 +17,13 @@ return {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
 				local opts = { silent = true, buffer = ev.buf }
-				--
-				-- opts.desc = "Show LSP references"
-				-- keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
-				-- opts.desc = "Go to declaration"
-				-- keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration<CR>", opts)
+
+				opts.desc = "Show LSP references"
+				keymap.set("n", "gR", "<CMD>Telescope lsp_references<CR>", opts)
+
+				opts.desc = "Go to declaration"
+				keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration<CR>", opts)
+
 				-- opts.desc = "Go to definition"
 				-- keymap.set("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
 				-- keymap.set("n", "gi", "<CMD>Telescope lsp_implementations<CR>", opts)
@@ -44,14 +46,14 @@ return {
 				opts.desc = "Show LSP type definitions"
 				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
-				-- opts.desc = "See available code actions"
-				-- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+				opts.desc = "See available code actions"
+				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
-				-- opts.desc = "Show buffer diagnostics"
-				-- keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+				opts.desc = "Show buffer diagnostics"
+				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 				--
 				-- opts.desc = "Show line diagnostics"
 				-- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -72,10 +74,14 @@ return {
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({ capabilities = capabilities })
-			end,
+		mason_lspconfig.setup({
+			handers = {
+				function(server_name) -- default handler (optional)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+					})
+				end,
+			},
 		})
 	end,
 }

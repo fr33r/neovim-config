@@ -39,6 +39,8 @@ return {
         "golines",
         "gofumpt",
         "goimports-reviser",
+        -- java-debug-adapter and java-test are installed by nvim-java itself
+        -- (see lua/freer/plugins/lsp/jdtls.lua). Don't dual-manage them here.
       },
     })
   end,
